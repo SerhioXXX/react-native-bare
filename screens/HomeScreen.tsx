@@ -1,10 +1,21 @@
-import React, { SetStateAction, useState } from 'react';
-import { View, StyleSheet, FlatList, SafeAreaView, StatusBar, TextInput, TouchableOpacity, Text, useColorScheme } from 'react-native';
+import React, { SetStateAction, useState, useEffect } from 'react';
+import { Platform, View, StyleSheet, FlatList, SafeAreaView, StatusBar, TextInput, TouchableOpacity, Text, useColorScheme } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+import { v4 as uuidv4 } from 'uuid';
 import Header from '../components/Header';
 import ListItem from '../components/ListItem';
-import { v4 as uuidv4 } from 'uuid';
+
+const instructions = Platform.select({
+  ios: 'Platform iOS : Press Cmd+R to reload,\n' +
+    'Cmd+D or shake for dev menu',
+  android: 'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
 
 const HomeScreen = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   const isDarkMode = useColorScheme() === 'dark';
   console.log('isDarkMode ====> ', useColorScheme());
@@ -45,6 +56,9 @@ const HomeScreen = () => {
           keyExtractor={item => item.id}
         />
       </View>
+      <Text style={styles.instructions}>
+        {instructions}
+      </Text>
     </SafeAreaView>
   );
 };
@@ -52,6 +66,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: '#4f6d7a',
     // paddingTop: 60,
   },
   input: {
@@ -67,6 +82,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
     padding: 8,
     margin: 4,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#F5FCFF',
+    marginBottom: 5,
   },
 });
 
