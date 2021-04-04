@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
 
 export default class WelcomeScreen extends Component {
-
-  componentDidMount() {
-    SplashScreen.hide();
-  }
 
   render() {
     return (

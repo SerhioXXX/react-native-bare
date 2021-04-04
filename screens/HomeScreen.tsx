@@ -1,6 +1,5 @@
-import React, { SetStateAction, useState, useEffect } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import { Platform, View, StyleSheet, FlatList, SafeAreaView, StatusBar, TextInput, TouchableOpacity, Text, useColorScheme } from 'react-native';
-import SplashScreen from 'react-native-splash-screen';
 import { v4 as uuidv4 } from 'uuid';
 import Header from '../components/Header';
 import ListItem from '../components/ListItem';
@@ -13,9 +12,6 @@ const instructions = Platform.select({
 });
 
 const HomeScreen = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
 
   const isDarkMode = useColorScheme() === 'dark';
   console.log('isDarkMode ====> ', useColorScheme());
